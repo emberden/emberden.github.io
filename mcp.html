@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mcp setup</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header>
+	<h1>mcp setup</h1>
+</header>
+
+<hr>
+
+<h2> intro </h2>
+ 
+ This tutorial will cover how to get a working MCP environment setup for mod
+ development. Some knowledge of working with the shell on your OS of choice is
+ assumed. The tutorial uses MCP 4.3 for beta 1.7.3, but should be the same for
+ earlier versions.
+
+<hr>
+
+<h2> tutorial </h2>
+
+ First, download MCP from 
+<a href="http://minecraft.gamepedia.com/Programs_and_editors/Mod_Coder_Pack">here</a>.
+ Scroll down the see the downloads table. Unzip it somewhere. The zip will
+ probably NOT be a self-contained folder, so put it in one first before
+ extracting.
+ 
+ <p>
+
+ If you are on linux, you will probably need to install wine.
+
+ <p>
+
+ Now, we need to edit one of MCP's scripts that was broken sometime during
+ the seven years since these versions were created. Open runtime/decompile.py
+ and comment out line 503 by adding a "#" to the start. It should look like
+ this:
+
+ <p>
+
+ <code>
+#    commands.checkupdates()
+ </code>
+
+ <p>
+
+ Now we add the minecraft.jar and associated files. We need to end up with the
+ following structure:
+
+ <p> <code>
+jars/ 
+└── bin 
+    ├── jinput.jar 
+    ├── lwjgl.jar 
+    ├── lwjgl_util.jar 
+    ├── minecraft.jar 
+    ├── natives 
+    └── server.properties 
+ </code> <p>
+
+ Note that natives/ MUST contain the correct natives for your OS.
+
+ <p>
+
+ At this point you can add mods to the minecraft.jar, they should decompile
+ fine (though MCP will complain about a modified jar being used). Since the
+ rest of these tutorials will use Modloader, and you should use Modloader, now
+ is a good time to install Modloader.
+
+ <p>
+
+ Do it!
+
+ <p>
+ 
+<hr>
+
+<h2> testing the setup </h2>
+
+ From this point on, whenever a script is referred to, we mean the one for
+ your platform. That would be a .sh for OSX, Linux, or any other Unix-like,
+ and .bat for windows.
+
+ <p>
+
+ MCP should be setup now. We will test this by decompiling, recompiling, and
+ running Minecraft.
+
+ <p>
+
+ Run decompile to decompile the game. This will take a little while, but if
+ all goes well you will end up with a directory "src" containing the game's
+ source code! You will probably get an error about failed hunks in
+ RenderBlocks, this can be ignored.
+
+ <p>
+
+ Test recompilation by running recompile followed by reobfuscate. Recompile
+ will recompile the source files into java bytecode, while reobfuscate will
+ change all the symbol names back to the way they are in an unmodified jar.
+ You need to do this if you want to distribute your changes.
+
+ <p>
+
+ At this point, you can assume you have a functional MCP instance, and can
+ start developing! yay!
+
+ <p>
+
+ We'll run through the rest of the scripts briefly now, as some of them are
+ useful (and others dangerous!)
+
+ <p>
+
+ Cleanup will reset the working directory back to an empty state, taking your
+ work with it! Be careful with it! Backup your work!
+
+ <p>
+
+ Startclient will launch Minecraft (specifically the result of the last
+ recompile). This is useful for testing, as you don't need to package and
+ install your mods into another client.
+
+ <p>
+
+ Startserver will run the server, which we didn't set up because I do not know
+ where to find a vanilla beta 1.7.3 server jar. If you know where to find one,
+ let me know! Until that happens, this script will do nothing of use.
+
+ <p>
+
+ Updatemcp will not work and will probably break your install. You might want
+ to delete it, just to be safe.
+
+ <p>
+
+ Similarly, updatenames and updatemd5 will probably break your install. These
+ ones probably <i>will</i> work, but I don't know what exactly they do, other
+ than update something related to the obfuscation mappings.
+
+<p>
+
+<hr>
+
+<h2> end </h2>
+
+That's the end of this tutorial. If you are stuck somewhere, try reading the
+MCP docs (docs/), or contact me and ask. If your setup seems to work, move on
+to the other tutorials and start making mods!
+
+<hr>
+
+<a href="index.html"><< home</a>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+body {
+    margin: 40px auto;
+    max-width: 854px;
+    line-height: 1.6;
+    font-size: 18px;
+    color: #f3f3f3;
+    padding: 0 10px;
+    background-color: #9EAC88;
+}
+
+h1,h2,h3 {
+    line-height: 1.2;
+}
+
+a {
+    color:  #393920;
+}
+
+hr {
+    border-color:  inherit;
+}
+
+code {
+    background: #eee;
+    border: #393920 dashed 1px; 
+    padding: 6px;
+    max-width: 80%;
+    font-size: 12px;
+    color: #393920;
+    display: block;
+    white-space: pre;
+}
